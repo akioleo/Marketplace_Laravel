@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label>Slug</label>
-            <input type="text" name="slug" class="form-control" value="{{$category->slug}}">
+            <input type="text" name="slug" class="form-control" value="{{$category->slug}}" disabled="true">
         </div>
 
         <div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -50,7 +51,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
 	    $data = $request->all();
-
+        $data['slug'] = Str::slug($data['name'], '-'); 
 	    $category = $this->category->create($data);
 
 	    flash('Categoria Criado com Sucesso!')->success();
@@ -94,6 +95,7 @@ class CategoryController extends Controller
 	    $data = $request->all();
 
 	    $category = $this->category->find($category);
+        $data['slug'] = Str::slug($data['name'], '-'); 
 	    $category->update($data);
 
 	    flash('Categoria Atualizada com Sucesso!')->success();

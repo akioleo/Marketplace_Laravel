@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class StoreController extends Controller
 {
@@ -47,7 +48,7 @@ class StoreController extends Controller
             //Já passa o file 'logo' pronto para a trait
 			$data['logo'] = $this->imageUpload($request->file('logo'));
 		}
-
+        $data['slug'] = Str::slug($data['name'], '-'); 
         //Criar uma loja por meio desse usuário (1:1 Usuário-loja)
         //Chamar método create(com os dados)
     	$store = $user->store()->create($data);
@@ -78,7 +79,7 @@ class StoreController extends Controller
             //Atualização no banco
             $data['logo'] = $this->imageUpload($request->file('logo'));
         }
-
+        $data['slug'] = Str::slug($data['name'], '-'); 
     	$store->update($data);
        //Chama a função flash com método success que irá printar a mensagem na cor verde
     	flash('Loja Atualizada com Sucesso')->success();

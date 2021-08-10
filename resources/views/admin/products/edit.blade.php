@@ -76,7 +76,7 @@
 
     <div class="form-group">
         <label>Slug</label>
-        <input type="text" name="slug" class="form-control" value="{{$product -> slug}}">
+        <input type="text" name="slug" class="form-control" value="{{$product -> slug}}" disabled="true">
     </div>
 
     <div>

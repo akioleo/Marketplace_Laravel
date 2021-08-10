@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\ProductRequest;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -68,6 +69,7 @@ class ProductController extends Controller
         //O products existe no objeto 'store', então para retornar o objeto loja, retorna um atributo
         //esta acessando a loja do usuario autenticado
         $store = auth()->user()->store;
+        $data['slug'] = Str::slug($data['name'], '-'); 
         //Por meio dessa loja, eu crio um produto pra essa loja
         //método create retorna objeto com as informações do produto, armazenando na variável $product 
         $product = $store ->products() -> create($data);
@@ -128,6 +130,7 @@ class ProductController extends Controller
         $categories = $request->get('categories', null);
         //Passar o id 
         $product = $this->product->find($product);
+        $data['slug'] = Str::slug($data['name'], '-'); 
         //Passa $data para o update
         $product->update($data);
 
