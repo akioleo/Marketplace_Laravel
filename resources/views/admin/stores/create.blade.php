@@ -52,7 +52,6 @@
         <div class="form-group">
             <label>Logomarca</label>
             <input type="file" name="logo" class="form-control  @error('logo') is-invalid @enderror">
-
             @error('logo')
             <div class="invalid-feedback">
                 {{$message}}
