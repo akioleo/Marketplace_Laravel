@@ -6,12 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Storage;
 
 class StoreController extends Controller
 {
-
+    use UploadTrait;
     //Vai permitir usar o imageUpload na classe
-    //856563
 	public function __construct()
 	{
         //Verificar se já possui uma loja
@@ -42,8 +42,11 @@ class StoreController extends Controller
         //Salvará na variável user de acordo com a autenticação
 		$user = auth()->user();
 
-
-
+		if($request->hasFile('logo')) {
+            //Inserindo uma chave(imageUpload, a imagem inserida $request) para a coluna 'logo'
+            //Já passa o file 'logo' pronto para a trait
+			$data['logo'] = $this->imageUpload($request->file('logo'));
+		}
 
         //Criar uma loja por meio desse usuário (1:1 Usuário-loja)
         //Chamar método create(com os dados)
@@ -66,8 +69,15 @@ class StoreController extends Controller
         //Essa busca do find vai trazer a logo
 	    $store = \App\Store::find($store);
 
-
-
+        if($request->hasFile('logo')) {
+            if(Storage::disk('public')->exists($store->logo)){
+                Storage::disk('public')->delete($store->logo);
+            }
+            //Inserindo uma chave(imageUpload, a imagem inserida "$request") para a coluna 'logo' 
+            //Já passa o file 'logo' pronto para a trait
+            //Atualização no banco
+            $data['logo'] = $this->imageUpload($request->file('logo'));
+        }
 
     	$store->update($data);
        //Chama a função flash com método success que irá printar a mensagem na cor verde
