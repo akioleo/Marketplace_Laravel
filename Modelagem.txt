@@ -1,0 +1,3 @@
+1:1 - Um pra um (Usuario e loja) | hasOne(usuario, ele tem uma loja) e belongsTo(loja, pertence ao usuário)
+1:N - Um pra muitos (Loja e Produtos) | hasMany(loja, ela que contém muitos produtos) e belongsTo(Produtos, pertence à uma loja)
+N:N - Muitos pra muitos (Produtos e Categorias) | belongsToMany

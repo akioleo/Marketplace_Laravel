@@ -1,0 +1,1 @@
+select u.nome, count(s.id) as total_stores from users u inner join stores s on s.user_id = u.id group by u.id;
