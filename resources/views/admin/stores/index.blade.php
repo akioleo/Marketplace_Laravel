@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')    
+{{-- Se não possui loja, aparecer o botão de "CRIAR LOJA" --}}
+    @if(!$store)
+    <a href="{{route('admin.stores.create')}}" class="btn btn-sm btn-success">CRIAR LOJA</a>
+    @else
     <table class="table table-striped">
         <thead>
             <tr>
@@ -29,8 +33,5 @@
             </tr> 
         </tbody>
     </table>
-    {{-- Se não possui loja, aparecer o botão de "CRIAR LOJA" --}}
-    @if(!$store)
-    <a href="{{route('admin.stores.create')}}" class="btn btn-sm btn-success">CRIAR LOJA</a>
     @endif
 @endsection

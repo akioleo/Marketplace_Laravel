@@ -62,6 +62,8 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $data = $request->all();
+        //Pegar o request a chave 'categories' com valor default null(se nao existir), que será sincronizado através de variável abaixo
+        $categories = $request->get('categories', null);
         //Vai ter a loja deste usuário por meio da autenticação (chamando o OBJETO store)
         //O products existe no objeto 'store', então para retornar o objeto loja, retorna um atributo
         //esta acessando a loja do usuario autenticado
@@ -70,7 +72,7 @@ class ProductController extends Controller
         //método create retorna objeto com as informações do produto, armazenando na variável $product 
         $product = $store ->products() -> create($data);
         //Faz a ligação de $produtc com categories e faz o save com sync 
-        $product-> categories() -> sync($data['categories']);
+        $product-> categories() -> sync($categories);
 
         if($request->hasfile('photos')){
             //dentro de $images terá as fotos pós upload e faz a inserção 
@@ -122,11 +124,17 @@ class ProductController extends Controller
     {
         //Recebe os dados
         $data = $request->all();
+        //Pegar o request a chave 'categories' com valor default null(se nao existir), que será sincronizado através de variável abaixo
+        $categories = $request->get('categories', null);
         //Passar o id 
         $product = $this->product->find($product);
         //Passa $data para o update
         $product->update($data);
-        $product-> categories() -> sync($data['categories']);
+
+        //Só faz a sincronização se a categoria (pega o valor de categoria "$categories") não for nula
+        //Ter controle para não perder as categorias que o usuário já tem para aquele produto
+        if (!is_null($categories))
+            $product-> categories() -> sync($categories);
 
         if($request->hasfile('photos')){
             //dentro de $images terá as fotos pós upload e faz a inserção 
