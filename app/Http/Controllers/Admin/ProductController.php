@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 //Importando Classe/Model Product
 use App\Product;
 use App\Http\Requests\ProductRequest;
+use App\Traits\UploadTrait;
 
 class ProductController extends Controller
 {
+    use UploadTrait;
     //Atributo privado que vai receber o valor do parâmetro no construtor
     private $product;
 
@@ -73,7 +75,7 @@ class ProductController extends Controller
         if($request->hasfile('photos')){
             //dentro de $images terá as fotos pós upload e faz a inserção 
             //Coluna em Product_images na tabela é image (na migration)
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
             //$images é o resultado da function UploadImages
             $product ->photos()->createMany($images);
 
@@ -129,7 +131,7 @@ class ProductController extends Controller
         if($request->hasfile('photos')){
             //dentro de $images terá as fotos pós upload e faz a inserção 
             //Coluna em Product_images na tabela é image (na migration)
-            $images = $this->imageUpload($request, 'image');
+            $images = $this->imageUpload($request->file('photos'), 'image');
             //$images é o resultado da function UploadImages
             $product ->photos()->createMany($images);
 
@@ -154,17 +156,5 @@ class ProductController extends Controller
         //Mensagem flash
         flash('Produto Removido com Sucesso!') ->success();
         return redirect()->route('admin.products.index');
-    }
-
-    private function imageUpload(Request $request, $imageColumn)
-    {
-        $images = $request->file('photos');
-
-        $uploadedImages = [];
-
-        foreach($images as $image){
-                $uploadedImages[] = [$imageColumn =>$image->store('products', 'public')];
-        }
-        return $uploadedImages;
     }
 }

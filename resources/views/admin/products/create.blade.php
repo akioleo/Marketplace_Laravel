@@ -64,7 +64,7 @@
 
         <div class="form-group">
             <label>Fotos do Produto</label>
-            <input type="file" name="photos[]" class="form-control" mutiple>
+            <input type="file" name="photos[]" class="form-control" multiple>
         </div>
 
         <div class="form-group">
