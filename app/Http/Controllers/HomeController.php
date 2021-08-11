@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         //orderBy('id', 'DESC') - Ordenado por ID em ordem descrescente e limitando por 8 na página
-        $products = $this->product->limit(8)->orderBy('id', 'DESC')->get();
+        $products = $this->product->limit(9)->orderBy('id', 'DESC')->get();
         return view('welcome', compact('products'));
     }
 
