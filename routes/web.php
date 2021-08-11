@@ -12,12 +12,46 @@
 */
 
 use App\Product;
+//Apontando para o método HomeController no método index
+Route::get('/', 'HomeController@index') -> name('home');
+Route::get('/product/{slug}', 'HomeController@single') ->name('product.single');
 
-Route::get('/', function () {
-    $helloWorld = 'Hello World';
 
-    return view('welcome', compact('helloWorld'));
-}) -> name('home');
+//Chamar o middleware por array, passando qual middleware quer utilizar para autenticação 
+Route::group(['middleware' => ['auth']], function(){
+    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
+        //     Route::prefix('stores')->name('stores.')->group(function(){
+        //         //Primeiro parâmetro é o "link" e o segundo é a chamada do Controller
+        //         //Uma contrabarra e escape
+        //         //index é o método dentro de Admin/StoreController
+        //         Route::get('/', 'StoreController@index') -> name('index');
+        //         //Vai apontar no método create no StoreController
+        //         Route::get('/create', 'StoreController@create') -> name('create');
+        //         //Post virá do nosso formulário create(view)
+        //         Route::post('/store', 'StoreController@store') -> name('store');
+        //         //Passando parâmetro store dinâmico (irá colocar o id da loja que deseja buscar/atualizar)
+        //         Route::get('/{store}/edit', 'StoreController@edit') -> name('edit');
+        //         //O update vai a atualização. Irá apontar para o método update
+        //         Route::post('/update/{store}', 'StoreController@update') -> name('update');
+        //         //Rota de REMOÇÃO de loja
+        //         Route::get('/destroy/{store}', 'StoreController@destroy') -> name('destroy');
+        //     }); 
+            //Basicamente o meio criado acima é o que o laravel faz com resource
+            Route::resource('stores', 'StoreController');
+            Route::resource('products', 'ProductController');
+            Route::resource('categories', 'CategoryController');
+        
+            //Apelido photo.remove
+            Route::post('photos/remove', 'ProductPhotoController@removePhoto')->name('photo.remove');
+        });
+});
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home'); //-> middleware('auth'); 
+
+
+
 
 Route::get('/model', function () {
     // $products = \App\Product::all();  // Traduzido em Select * from products (irá procurar pela tabela no plural de Product)
@@ -139,40 +173,3 @@ Route::get('/model', function () {
     // $product = \App\Product::find(49);
     // return $product->categories;
 });
-
-//PRIMEIRA ROTA: EXIBIR TODAS AS LOJAS EM PÁGINAS
-//SEGUNDA ROTA: EXIBIR FORMULÁRIO PARA CRIAR LOJA
-//TERCEIRA ROTA: SALVAR A LOJA
-
-//Chamar o middleware por array, passando qual middleware quer utilizar para autenticação 
-Route::group(['middleware' => ['auth']], function(){
-    Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function(){
-        //     Route::prefix('stores')->name('stores.')->group(function(){
-        //         //Primeiro parâmetro é o "link" e o segundo é a chamada do Controller
-        //         //Uma contrabarra e escape
-        //         //index é o método dentro de Admin/StoreController
-        //         Route::get('/', 'StoreController@index') -> name('index');
-        //         //Vai apontar no método create no StoreController
-        //         Route::get('/create', 'StoreController@create') -> name('create');
-        //         //Post virá do nosso formulário create(view)
-        //         Route::post('/store', 'StoreController@store') -> name('store');
-        //         //Passando parâmetro store dinâmico (irá colocar o id da loja que deseja buscar/atualizar)
-        //         Route::get('/{store}/edit', 'StoreController@edit') -> name('edit');
-        //         //O update vai a atualização. Irá apontar para o método update
-        //         Route::post('/update/{store}', 'StoreController@update') -> name('update');
-        //         //Rota de REMOÇÃO de loja
-        //         Route::get('/destroy/{store}', 'StoreController@destroy') -> name('destroy');
-        //     }); 
-            //Basicamente o meio criado acima é o que o laravel faz com resource
-            Route::resource('stores', 'StoreController');
-            Route::resource('products', 'ProductController');
-            Route::resource('categories', 'CategoryController');
-        
-            //Apelido photo.remove
-            Route::post('photos/remove', 'ProductPhotoController@removePhoto')->name('photo.remove');
-        });
-});
-
-Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home'); //-> middleware('auth'); 
