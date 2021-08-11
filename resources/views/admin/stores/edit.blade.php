@@ -65,9 +65,9 @@
         </div>
 
         <div class="form-group">
-            <label>Slug</label>
-            <input type="text" name="slug" class="form-control" value="{{$product -> slug}}" disabled="true"> 
-        </div>
+        <label>Slug</label>
+        <input type="text" name="slug" class="form-control" value="{{$store -> slug}}" disabled="true">
+    </div>
 
         <div>
             <button type="submit" class="btn btn-lg btn-success">Atualizar Loja</button>
