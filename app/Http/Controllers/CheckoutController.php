@@ -12,6 +12,7 @@ class CheckoutController extends Controller
         if(!auth()->check()){
             return redirect()->route('login');
         }
+        //Chama a function que cria uma nova sessão do PagSeguro
         $this->makePagSeguroSession();
 
         //Mostra o codigo da sessão

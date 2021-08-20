@@ -63,3 +63,18 @@
     </div>
 
 @endsection
+
+
+@section('scripts')
+    <!-- LIB do Pagseguro em JS -->
+    <script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <!-- Utilizando os métodos desse pacote JS -->
+    <script>
+        //Chamando a sessão que está ativa (que está na chave 'pagseguro_session_code')
+        const sessionID = '{{session()->get('pagseguro_session_code')}}';
+        //Passando para o pacote JS do próprio PagSeguro esse ID
+        PagSeguroDirectPayment.setSessionID(sessionID);
+    </script>
+
+    
+@endsection
