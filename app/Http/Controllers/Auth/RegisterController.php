@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -69,5 +70,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    //Chamado logo após que o usuário foi registrado
+    protected function registered(Request $request, $user)
+    {
+        //Se a sessão possui um carrinho
+        if(session()->has('cart')){
+            //Manda para a tela de checkout
+            return redirect()->route('checkout.index');
+        }
+        //Se não tiver vai para o padrão
+        return null;
     }
 }

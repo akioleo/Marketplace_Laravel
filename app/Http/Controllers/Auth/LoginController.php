@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,5 +38,17 @@ class LoginController extends Controller
     {
         //Só consegue fazer logout se estiver logado
         $this->middleware('guest')->except('logout');
+    }
+    
+    //Método é chamado após o usuário fazer a autenticação
+    protected function authenticated(Request $request, $user)
+    {
+        //Se a sessão possui um carrinho
+        if(session()->has('cart')){
+            //Manda para a tela de checkout
+            return redirect()->route('checkout.index');
+        }
+        //Se não tiver, vai para o administrativo(padrão)
+        return null;
     }
 }
