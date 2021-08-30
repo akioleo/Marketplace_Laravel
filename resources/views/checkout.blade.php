@@ -68,6 +68,7 @@
 @section('scripts')
     <!-- LIB do Pagseguro em JS -->
     <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <script src="{{asset('assets/js/jquery.ajax.js')}}"></script>
     <!-- Utilizando os métodos desse pacote JS -->
     <script>
         //Chamando a sessão que está ativa (que está na chave 'pagseguro_session_code')
@@ -96,7 +97,9 @@
                         //Dentro da chave brand, buscar pela chave name (que no exemplo possui "VISA") e jogará pra dentro do span no form de Número do Cartão
                         let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png">`;
                         //Irá imprimir no HTML a imgFlag
-                        spanBrand.innerHTML = imgFlag; 
+                        spanBrand.innerHTML = imgFlag;  
+                                     
+                        document.querySelector('input[name=card_brand]').value = res.brand.name;
                         //Chamando a função de parcelamento passando o valor e o nome da bandeira do cartão
                         getInstallments(40, res.brand.name);
                     },
@@ -111,8 +114,48 @@
                 });
             }
         });
-
+        //processCheckout é a classe do botão de submit
+        //Ao clicar no botão, irá realizar a busca do token 
         let submitButton = document.querySelector('button.processCheckout');
+        
+        submitButton.addEventListener('click', function(event){
+            //Para não executar o evento padrão de submit do botão 
+            event.preventDefault();
+            //Gerando card token
+            PagSeguroDirectPayment.createCardToken ({
+                cardNumber: document.querySelector('input[name=card_number]').value,
+                brand:      document.querySelector('input[name=card_brand]').value, 
+                cvv:        document.querySelector('input[name=card_cvv]').value,
+                expirationMonth: document.querySelector('input[name=card_month]').value,
+                expirationYear:  document.querySelector('input[name=card_year]').value,
+                success: function(res) {
+                    processPayment(res.card.token)
+                }
+            });
+        });
+
+
+        function processPayment(token) {
+            //o data que será usado abaixo no $.ajax
+            let data = {
+                //token irá receber do parâmetro
+                token: token,
+                //getSenderHash retorna um hash que identifica o usuário na requisição (pagamento)
+                hash: PagSeguroDirectPayment.getSenderHash(),
+                //select_installments é o select com o parcelamento
+                installment: document.querySelector('select_installments').value
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: data,
+                dataType: 'json',
+                success: function(res) {
+                    console.log(res);
+                }
+            });
+        }
 
         
         //Função para parcelamento
@@ -149,7 +192,7 @@
     //installments é o array com os parcelamentos (ex: 9x = {9})
     function drawSelectInstallments(installments) {
         let select = '<label>Opções de Parcelamento:</label>';
-        select += '<select class="form-control">';
+        select += '<select class="form-control select_installments">';
         for(let l of installments) { 
             //Quantidade e total da parcela | visualmente pro usuário {2}x de R${40} Total {80}
             select += `<option value="${l.quantity}|${l.installmentAmount}">${l.quantity}x de ${l.installmentAmount} - Total fica ${l.totalAmount}</option>`;

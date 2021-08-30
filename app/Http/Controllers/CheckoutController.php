@@ -23,6 +23,7 @@ class CheckoutController extends Controller
         return view('checkout');
     }
 
+
     private function makePagSeguroSession()
     {
         //Verificar se não existe uma session code
