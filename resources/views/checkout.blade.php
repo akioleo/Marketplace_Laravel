@@ -67,14 +67,97 @@
 
 @section('scripts')
     <!-- LIB do Pagseguro em JS -->
-    <script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
     <!-- Utilizando os métodos desse pacote JS -->
     <script>
         //Chamando a sessão que está ativa (que está na chave 'pagseguro_session_code')
-        const sessionID = '{{session()->get('pagseguro_session_code')}}';
+        const sessionId = '{{session()->get('pagseguro_session_code')}}';
         //Passando para o pacote JS do próprio PagSeguro esse ID
-        PagSeguroDirectPayment.setSessionID(sessionID);
+        PagSeguroDirectPayment.setSessionId(sessionId);
     </script>
 
-    
+    <!-- Pegando bandeira do cartão -->
+    <script>
+        //Buscar pelo querySelector que permite fazer buscas no DOM (Modelo de Objeto de Documento)
+        //Pegar o elemento que vem do card_number
+        let cardNumber = document.querySelector('input[name=card_number]');
+        //Buscar na view o span que possui a classe brand
+        let spanBrand = document.querySelector('span.brand');
+        //Tudo que o usuário digitar, executa o callback (no console do inspecionar)
+        cardNumber.addEventListener('keyup', function(){
+            if(cardNumber.value.length >=6) {
+                //Chamando do PagSeguroDirectPayment o método getBrand é utilizado para verificar qual a bandeira do cartão que está sendo digitada
+                PagSeguroDirectPayment.getBrand({
+                    //Informar para o PagSeguroDirectPayment os 6 primeiros dígitos do cartão
+                    cardBin: cardNumber.value.substr(0,6),
+                    //Manipular o retorno 
+                    //Se der sucesso
+                    success: function(res){
+                        //Dentro da chave brand, buscar pela chave name (que no exemplo possui "VISA") e jogará pra dentro do span no form de Número do Cartão
+                        let imgFlag = `<img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/68x30/${res.brand.name}.png">`;
+                        //Irá imprimir no HTML a imgFlag
+                        spanBrand.innerHTML = imgFlag; 
+                        //Chamando a função de parcelamento passando o valor e o nome da bandeira do cartão
+                        getInstallments(40, res.brand.name);
+                    },
+                    //Se der erro
+                    error: function(err) {
+                        console.log(err);
+                    },
+                    //Chamar um estado após logo após toda a requisição ter sido executada 
+                    complete: function(res) {
+                        //console.log('Complete: ', res);
+                    }
+                });
+            }
+        });
+
+        let submitButton = document.querySelector('button.processCheckout');
+
+        
+        //Função para parcelamento
+        //amount - total da compra / brand - bandeira(nome) do cartão 
+        function getInstallments(amount, brand) {
+            //PagSeguroDirectPayment = classe JS do pagseguro
+            //método getInstallments está dentro do DirectPayment
+            PagSeguroDirectPayment.getInstallments({
+                //Passando o amount que vai pegar do parâmetro amount
+                amount: amount,
+                //Passando o brand que vai pegar do parâmetro brand
+                brand: brand,
+                //Quantidade de parcelas que você assume o juros, ou seja, se for 3, assume 3 parcelas sem juros
+                maxInstallmentNoInterest: 0,
+                success: function(res) {
+                    //drawSelectInstallments = Desenhe Select de Parcelas 
+                    //Chamando do res a chave installments 
+                    //Pegando da chave installments a chave Visa 
+                    //[brand] vai trazer o valor dinâmico (visa, master etc..) vindo do getBrand
+                    let selectInstallments = drawSelectInstallments(res.installments[brand]);
+                    //Jogando todo o select desenhado para a div installments
+                    document.querySelector('div.installments').innerHTML = selectInstallments;
+                },
+                error: function(err) {
+                    
+                },
+                complete: function(res) {
+
+                },
+            })
+        }
+
+
+    //installments é o array com os parcelamentos (ex: 9x = {9})
+    function drawSelectInstallments(installments) {
+        let select = '<label>Opções de Parcelamento:</label>';
+        select += '<select class="form-control">';
+        for(let l of installments) { 
+            //Quantidade e total da parcela | visualmente pro usuário {2}x de R${40} Total {80}
+            select += `<option value="${l.quantity}|${l.installmentAmount}">${l.quantity}x de ${l.installmentAmount} - Total fica ${l.totalAmount}</option>`;
+        }
+        select += '</select>';
+        return select;
+    }
+
+
+    </script>
 @endsection

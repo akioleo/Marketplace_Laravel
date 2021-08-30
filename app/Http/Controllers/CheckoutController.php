@@ -16,7 +16,7 @@ class CheckoutController extends Controller
         $this->makePagSeguroSession();
 
         //Mostra o codigo da sessão
-        var_dump(session()->get('pagseguro_session_code'));
+    //var_dump(session()->get('pagseguro_session_code'));
         //remove a chave da sessão
         //session()->forget('pagseguro_session_code');
 
