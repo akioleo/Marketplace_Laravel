@@ -20,6 +20,7 @@
                 </div>
             </div>
             <form action="" method="post">
+                
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label>Nome no Cartão</label>
@@ -68,6 +69,7 @@
 @section('scripts')
     <!-- LIB do Pagseguro em JS -->
     <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <!-- Importando o ajax no projeto -->
     <script src="{{asset('assets/js/jquery.ajax.js')}}"></script>
     <!-- Utilizando os métodos desse pacote JS -->
     <script>
@@ -80,6 +82,7 @@
     <!-- Pegando bandeira do cartão -->
     <script>
         //Buscar pelo querySelector que permite fazer buscas no DOM (Modelo de Objeto de Documento)
+        let amountTransaction = '{{$cartItems}}';
         //Pegar o elemento que vem do card_number
         let cardNumber = document.querySelector('input[name=card_number]');
         //Buscar na view o span que possui a classe brand
@@ -101,7 +104,7 @@
                                      
                         document.querySelector('input[name=card_brand]').value = res.brand.name;
                         //Chamando a função de parcelamento passando o valor e o nome da bandeira do cartão
-                        getInstallments(40, res.brand.name);
+                        getInstallments(amountTransaction, res.brand.name);
                     },
                     //Se der erro
                     error: function(err) {
@@ -139,16 +142,20 @@
             //o data que será usado abaixo no $.ajax
             let data = {
                 //token irá receber do parâmetro
-                token: token,
+                card_token: token,
                 //getSenderHash retorna um hash que identifica o usuário na requisição (pagamento)
                 hash: PagSeguroDirectPayment.getSenderHash(),
                 //select_installments é o select com o parcelamento
-                installment: document.querySelector('select_installments').value
+                installment: document.querySelector('select.select_installments').value,
+                card_name: document.querySelector('input[name=card_name').value,
+                //Mandando o csrf do próprio laravel
+                _token: '{{csrf_token()}}'
             };
 
             $.ajax({
+                //Mandando requisição POST pro backend
                 type: 'POST',
-                url: '',
+                url: '{{route("checkout.proccess")}}',
                 data: data,
                 dataType: 'json',
                 success: function(res) {
