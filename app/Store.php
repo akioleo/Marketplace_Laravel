@@ -16,4 +16,10 @@ class Store extends Model
     {
         return $this -> hasMany(Product::class);
     }
+    
+    public function orders()
+    {
+        //Este usuário tem muitos (hasMany) orders
+        return $this->hasMany(UserOrder::class);
+    }
 }

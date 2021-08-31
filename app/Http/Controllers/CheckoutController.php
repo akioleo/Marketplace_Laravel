@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Payment\PagSeguro\CreditCard;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -38,104 +39,38 @@ class CheckoutController extends Controller
     {
         //Tudo que vier na requisição estará nessa variável
         $dataPost = $request->all();
-        $reference = 'XPTO';
-        //Instantiate a new direct payment request, using Credit Card
-        $creditCard = new \PagSeguro\Domains\Requests\DirectPayment\CreditCard();
-
-        /**
-         * @todo Change the receiver Email
-         */
-        $creditCard->setReceiverEmail(env('PAGSEGURO_EMAIL'));
-        $creditCard->setReference($reference);
-        $creditCard->setCurrency("BRL");
-
-
-        //CARRINHO
-        $cartItems = session()->get('cart');
-
-        foreach($cartItems as $item) {
-            $creditCard->addItems()->withParameters(
-                $reference,
-                $item['name'],
-                $item['amount'],
-                $item['price']
-            );
-        }
-
-        // USUÁRIO
+        //Usuário autenticado
         $user = auth()->user();
-        //Se estiver em sandbox, o email será test@sandbox.pagseguro.com.br, caso contrário, será o email do user
-        $email = env('PAGSEGURO_ENV') == 'sandbox' ? 'test@sandbox.pagseguro.com.br' : $user->email;
-        $creditCard->setSender()->setName($user->name);
-        $creditCard->setSender()->setEmail($email);
-        $creditCard->setSender()->setPhone()->withParameters(
-            11,
-            56273440
-        );
+        //cartItems está na sessão do cart
+        $cartItems = session()->get('cart');
+        //Passando o reference no Controller e no Payment somente instanciará
+        $reference = 'XPTO';
 
-        $creditCard->setSender()->setDocument()->withParameters(
-            'CPF',
-            '28671224309'
-        );
-        //chave 'hash' é importada do checkout.blade.php da function processPayment
-        $creditCard->setSender()->setHash($dataPost['hash']);
-        $creditCard->setSender()->setIp('127.0.0.0');
+        //Em creditCardPayment terá as 4 informações vinda do CreditCard.php        
+        $creditCardPayment = new CreditCard($cartItems, $user, $dataPost, $reference);
+        $result = $creditCardPayment->doPayment();
+        //Registra o pedido do usuário após o pagamento
+        //O return do result acima já manda pro userOrders
+        $userOrder = [
+            'reference' => $reference,
+            'pagseguro_code' => $result->getCode(),
+            'pagseguro_status' => $result->getStatus(),
+            'items' => serialize($cartItems),
+            'store_id' => 50,  
+        ];
+        
+        //Referencia do usuário vai chegar por meio da ligação do cliente autenticado
+        $user->orders()->create($userOrder);
 
-        // ENTREGA 
-        $creditCard->setShipping()->setAddress()->withParameters(
-            'Av. Brig. Faria Lima',
-            '1384',
-            'Jardim Paulistano',
-            '01452002',
-            'São Paulo',
-            'SP',
-            'BRA',
-            'apto. 114'
-        );
-        // ENDEREÇO DO CARTÃO
-        $creditCard->setBilling()->setAddress()->withParameters(
-            'Av. Brig. Faria Lima',
-            '1384',
-            'Jardim Paulistano',
-            '01452002',
-            'São Paulo',
-            'SP',
-            'BRA',
-            'apto. 114'
-        );
 
-        // CREDIT CARD
-        //$dataPost virá as informações do front e o token do checkout.blade na function processPayment
-        $creditCard->setToken($dataPost['card_token']);
-        //explode irá quebrar em duas casas, a casa 0 será a quantity, e a casa 1 installmentAmount
-        list($quantity, $installmentAmount) = explode('|', $dataPost['installment']);
 
-        //Garantir que sempre terá duas casas decimais do valor total e casa do milhar (mesmo não tendo tem que passar pelo menos vazio )
-        $installmentAmount = number_format($installmentAmount, 2, '.', '');
-
-        $creditCard->setInstallment()->withParameters($quantity, $installmentAmount);
-        //Poderia expor pro usuário a data de nascimento do dono do cartão
-        $creditCard->setHolder()->setBirthdate('01/10/1979');
-        //O nome poderá ser do form ou do usuário autenticado ($user->name)
-        $creditCard->setHolder()->setName($dataPost['card_name']); // Equals in Credit Card
-
-        $creditCard->setHolder()->setPhone()->withParameters(
-            11,
-            56273440
-        );
-
-        $creditCard->setHolder()->setDocument()->withParameters(
-            'CPF',
-            '28671224309'
-        );
-
-        $creditCard->setMode('DEFAULT');
-
-        $result = $creditCard->register(
-            \PagSeguro\Configuration\Configure::getAccountCredentials()
-        );
-
-        var_dump($result);
+        //Faz um retorno json devido ao type no ajax (o handle res vai receber esse array)
+        return response()->json([
+            'data' => [
+                'status' => true,
+                'message' => 'Pedido criado com sucesso!'
+            ]
+        ]);
     }
 
     private function makePagSeguroSession()

@@ -19,8 +19,8 @@
                     <hr>
                 </div>
             </div>
+            
             <form action="" method="post">
-                
                 <div class="row">
                     <div class="col-md-12 form-group">
                         <label>Nome no Cartão</label>
@@ -159,7 +159,7 @@
                 data: data,
                 dataType: 'json',
                 success: function(res) {
-                    console.log(res);
+                    alert(res.data.message);
                 }
             });
         }

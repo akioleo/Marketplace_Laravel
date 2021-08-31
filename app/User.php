@@ -45,8 +45,9 @@ class User extends Authenticatable
         return $this->hasOne(Store::class);
     }
 
-
-
-
-
+    public function orders()
+    {
+        //Este usuário tem muitos (hasMany) orders
+        return $this->hasMany(UserOrder::class);
+    }
 }
