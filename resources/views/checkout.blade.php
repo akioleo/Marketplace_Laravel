@@ -69,8 +69,11 @@
 @section('scripts')
     <!-- LIB do Pagseguro em JS -->
     <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
-    <!-- Importando o ajax no projeto -->
-    <script src="{{asset('assets/js/jquery.ajax.js')}}"></script>
+    <!-- Importando JQuery Completo -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <!-- Importando Toastr Alert Messages -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <!-- Utilizando os métodos desse pacote JS -->
     <script>
         //Chamando a sessão que está ativa (que está na chave 'pagseguro_session_code')
@@ -159,7 +162,10 @@
                 data: data,
                 dataType: 'json',
                 success: function(res) {
-                    alert(res.data.message);
+                    // Display a success toast, with a title
+                    toastr.success(res.data.message, 'Sucesso');
+                    //res.data.order vem do Controller na response json 'order' => $reference e redireciona para a tela do thanks
+                    window.location.href = '{{route('checkout.thanks')}}?order=' + res.data.order;
                 }
             });
         }
