@@ -9,7 +9,7 @@
 
 
 <p align=”center”>
-<a href=”LinkedIn https://www.linkedin.com/in/leonardo-akio/”>
+<a href=”https://www.linkedin.com/in/leonardo-akio/”>
 <img src=”https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue">
 </a>
 </p>
