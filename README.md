@@ -5,7 +5,12 @@
 ![GitHub stars](https://img.shields.io/github/stars/madhur-taneja/README-Template?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/madhur-taneja/README-Template?style=social)
 ![License](https://img.shields.io/badge/License-MIT-blue)](#license "Go to license section")
-![Linkedin](https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue)
+<a href=”https://www.linkedin.com/in/leonardo-akio/”><img src=”https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue"></a>
+
+
+
+(https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue)
+
 
 A template for README files that can be used for your future projects. A small description about the project, shields as well as the link to your repo.
 
