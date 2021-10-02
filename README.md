@@ -5,7 +5,7 @@
 ![GitHub stars](https://img.shields.io/github/stars/madhur-taneja/README-Template?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/madhur-taneja/README-Template?style=social)
 ![License](https://img.shields.io/badge/License-MIT-blue)](#license "Go to license section")
-
+<a href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
 
 
 <p align=”center”>
