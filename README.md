@@ -20,6 +20,7 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 - [Getting Started](#getting-started)
 	- [Installation](#installation)
 	- [Configuration](#configuration)
+	- [Versions](#versions)
 - [Development](#development)
     - [Part 1: Heading](#part-1-heading)
 	  - [Step 1: Subheading](#step-1-subheading)
@@ -82,6 +83,11 @@ Run the database migrations to create predefined database tables
 Run seeds to populate the database with data we want to develop in future
 
     php artisan db:seed  
+    
+### Versions
+We can check tools versions to avoid some errors 
+
+    php --version  |  composer --version  |  laravel --version
 
 ## Development
 
