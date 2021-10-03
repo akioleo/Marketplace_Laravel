@@ -1,5 +1,8 @@
-  <a href="./README.md">Inglês |</a>
-  <a href="./PORTUGUESE.md">Português</a>
+<div align='right'>
+    <a href="./README.md">Inglês |</a>
+    <a href="./PORTUGUESE.md">Português</a>
+</div>
+
 <div align='center'>
     <h1>Marketplace</h1>
     <a href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
@@ -10,12 +13,7 @@
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
 </div>
 
-<p>
-<div align='center'>
-    <a href="./README.md">Inglês |</a>
-    <a href="./PORTUGUESE.md">Português</a>
-</div>
-</p>
+
 
 ## Getting Started
 To get started, clone the repository to your directory
