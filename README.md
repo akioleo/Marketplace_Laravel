@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social"/>
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
     
-    <br>
+    <p></p>
     <a href="./README.md">Inglês |</a>
     <a href="./PORTUGUESE.md">Português</a>
 </div>
