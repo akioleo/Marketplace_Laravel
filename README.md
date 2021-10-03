@@ -21,12 +21,16 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 	- [Installation](#installation)
 	- [Configuration](#configuration)
 	- [Versions](#versions)
+- [Structure](#structure)
 - [Development](#development)
-    - [Part 1: Heading](#part-1-heading)
-	  - [Step 1: Subheading](#step-1-subheading)
+    - [Database relationships](#database-relationships)
+        - [User-Store](#user-store) 
+        - [Store-Products](#store-products)
+        - [Products-Categories](#products-categories)
 	- [Part 2: Heading](#part-2-heading)
 - [Contributing](#contributing)
 - [License](#license)
+
 
 ## Getting Started
 Open and view the Project using the `.zip` file provided
@@ -36,27 +40,27 @@ Or to get started, clone the repository to your directory
     git clone https://github.com/akioleo/Marketplace_Laravel.git
     
 Start the local development server
-
-    php artisan serve
-    
+```bash
+> php artisan serve
+```   
 
 ### Installation
 Install all the dependencies using composer
-
-    composer install
-    
+```bash
+> composer install
+```
 Generate a new artisan key
-
-    php artisan key:generate
-
+```bash
+> php artisan key:generate
+```
 
 ### Configuration
 Create a new *.env* archive based on *.env.example*
-
-    php -r "copy('.env.example', '.env');
-
+```bash
+> php -r "copy('.env.example', '.env');
+```
 In new `.env` file type your database credentials in these lines<br/>
-*Obs: **DB_CONNECTION** changes by the database used. Example: Postgre database (**pgsql**)*
+*Obs: **DB_CONNECTION** changes by the database used. Example: Postgre database (**pgsql**), sqlite, sqlsrv*
 
     DB_CONNECTION=mysql  
     DB_HOST=127.0.0.1  
@@ -76,42 +80,68 @@ Include personal <a href="https://acesso.pagseguro.uol.com.br/sandbox">PagSeguro
     DB_PASSWORD=
  
 Run the database migrations to create predefined database tables 
-
-    php artisan migrate  
-    
+```bash
+> php artisan migrate  
+```   
 Run seeds to populate the database with data we want to develop in future
-
-    php artisan db:seed  
-    
+```bash
+> php artisan db:seed  
+```    
 ### Versions
 We can check tools versions to avoid some errors 
 
     php --version  |  composer --version  |  laravel --version
     
 ***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+```bash
+> php artisan migrate:refresh
+```
+## Structure 
 
-    php artisan migrate:refresh
+```bash
+├── app
+├── artisan
+├── composer.json
+├── composer.lock
+├── config
+├── database
+├── package.json
+├── phpunit.xml
+├── public
+├── resources
+├── routes
+├── server.php
+├── storage.
+├── tests
+├── vendor
+├── webpack.mix.js
+├── yarn.lock
+```
+
 
 ## Development
 
-This section is completely optional. For big projects, the developement strategies are not discussed. But for small projects, you can give some insight to people. It has 2 benefits in my opinion:
+### Database relationships
 
-1. It's a way to give back to the community. People get to learn from you and appreciate your work
-2. You can refer the README in future as a quick refresher before an interview or for an old project to check if it can help you in your currect work
+#### User-Store
+1:1 relationship - where one user ***hasOne*** store and one store ***belongsTo*** an user
+```php
+$this->hasOne(Store::class);
+$this->belongsTo(User::class);
+```
+#### Store-Products
+1:N relationship - where one store ***hasMany*** products and one product ***belongsTo*** an store
+```php
+$this->hasMany(Product::class);
+$this->belongsTo(Store::class);
+```
+#### Products-Categories
+N:N relationship - where products ***belongsToMany*** categories and categories ***belongsToMany*** products
+```php
+$this->belongsToMany(Product::class);
+$this->belongsToMany(Category::class);
+```
 
-### Part 1: Heading
-
-#### Step 1: Subheading
-
-* Mention the steps here
-  * You can also have nested steps to break a step into small tasks
-  
-#### Step 2: Subheading
-
-* Mention the steps here.
-  * You can also have nested steps to break a step into small tasks
-
-For details now how everything has been implemented, refer the source code
 
 ### Part 2: Heading
 
