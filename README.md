@@ -26,7 +26,6 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 	  - [Step 1: Subheading](#step-1-subheading)
 	- [Part 2: Heading](#part-2-heading)
 - [Contributing](#contributing)
-- [Versioning](#versioning)
 - [License](#license)
 
 ## Getting Started
@@ -88,6 +87,10 @@ Run seeds to populate the database with data we want to develop in future
 We can check tools versions to avoid some errors 
 
     php --version  |  composer --version  |  laravel --version
+    
+***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
+
+    php artisan migrate:refresh
 
 ## Development
 
@@ -116,15 +119,8 @@ For details now how everything has been implemented, refer the source code
 
 ## Contributing
 
-Mention what you expect from the people who want to contribute
+We'd love to have your helping hand on `Marketplace`. If you have any contribuition, we can rate some pull requests.
 
-We'd love to have your helping hand on `Project Title`! See [CONTRIBUTING.md] for more information on what we're looking for and how to get started.
-
-## Versioning
-
-If your project has multiple versions, include information about it here. 
-
-For the available versions, see the [tags on this repository][tags]
 
 ## License
 
