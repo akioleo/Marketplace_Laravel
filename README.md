@@ -14,7 +14,7 @@
 </div>
 <br>
 
-The project is based on a marketplace with **laravel 6**, where we have a stores and products registration, with routes for admin, shopkeepers and the store itself, where customers can make purchases directly on the system
+The project is based on a marketplace with `laravel 6`, where we have a stores and products registration, with routes for admin, shopkeepers and the store itself, where customers can make purchases directly on the system.
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -33,43 +33,58 @@ The project is based on a marketplace with **laravel 6**, where we have a stores
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
-  ```
-    composer install
-  ```
-  ```
-    composer install
-  ```
-
-
-
-
 ## Getting Started
 Open and view the Project using the `.zip` file provided
 <br/>
 Or to get started, clone the repository to your directory
-  ```
+
     git clone https://github.com/akioleo/Marketplace_Laravel.git
-  ```
+    
+Start the local development server
+
+    php artisan serve
+
+### Configurations
 Install all the dependencies using composer
-  ```
+
     composer install
-  ```
 
-### Tools Required
+Generate a new artisan key
 
-All tools required go here. You would require the following tools to develop and run the project:
+    php artisan key:generate
 
-* A text editor or an IDE (like IntelliJ)
-* Mention the other tools required for the project 
+
+In `.env` file type your database credentials in these lines<br/>
+*Obs: **DB_CONNECTION** changes by the database used. Example: Postgre database (**pgsql**)*
+
+    DB_CONNECTION=mysql  
+    DB_HOST=127.0.0.1  
+    DB_PORT=3306  
+    DB_DATABASE=laravel  
+    DB_USERNAME=root  
+    DB_PASSWORD=
+ 
+
+Include personal PagSeguro credentials
+
+    DB_CONNECTION=mysql  
+    DB_HOST=127.0.0.1  
+    DB_PORT=3306  
+    DB_DATABASE=laravel  
+    DB_USERNAME=root  
+    DB_PASSWORD=
+ 
+ Run the database migrations (**Set the database connection in .env before migrating**)
+
+    php artisan migrate  
+    
+Run the database migrations (**Set the database connection in .env before migrating**)
+
+    php artisan db:seed  
 
 ### Installation
 
-All installation steps go here.
 
-* Installing a particular tool
-  * Steps to complete it
-  
-* Installing another tool
 
 ## Development
 
@@ -154,4 +169,4 @@ This section can also be called as `Resources` or `References`
 [LinkedIn]: https://www.linkedin.com/in/madhur-taneja/
 
 [contributors]: https://github.com/madhur-taneja/README-template/contributors
-[license]: https://github.com/madhur-taneja/README-template/blob/master/LICENSE.md
+[license]: https://github.com/akioleo/Marketplace/blob/master/LICENSE.md
