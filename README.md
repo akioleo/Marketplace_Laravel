@@ -15,13 +15,11 @@
     <a href="./PORTUGUESE.md">Português</a>
 </div>
 
-
-A template for README files that can be used for your future projects. A small description about the project, shields as well as the link to your repo.
-
-Open and view the Project using the `.zip` file provided or at my [GitHub Repository]
-
-The project is also hosted on [GitHub Pages]
-
+## Getting Started
+To get started, clone the repository to your directory
+  ```
+    git clone https://github.com/akioleo/Marketplace_Laravel.git
+  ```
 ## Table of Contents
 - [Getting Started](#getting-started)
 	- [Tools Required](#tools-required)
