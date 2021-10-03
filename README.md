@@ -124,4 +124,4 @@ For the available versions, see the [tags on this repository][tags]
 
 `Marketplace` is open source software [licensed as MIT][license].
 
-[license]: https://github.com/akioleo/Marketplace/blob/master/LICENSE.md
+[license]: https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt
