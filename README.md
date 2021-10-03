@@ -25,13 +25,9 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 	  - [Step 1: Subheading](#step-1-subheading)
 	  - [Step 2: Subheading](#step-2-subheading)
 	- [Part 2: Heading](#part-2-heading)
-- [Running the App](#running-the-app)
-- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [Versioning](#versioning)
-- [Authors](#authors)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 
 ## Getting Started
 Open and view the Project using the `.zip` file provided
@@ -56,7 +52,11 @@ Generate a new artisan key
 
 
 ### Configuration
-In `.env` file type your database credentials in these lines<br/>
+Create a new *.env* archive based on *.env.example*
+
+    php -r "copy('.env.example', '.env');
+
+In new `.env` file type your database credentials in these lines<br/>
 *Obs: **DB_CONNECTION** changes by the database used. Example: Postgre database (**pgsql**)*
 
     DB_CONNECTION=mysql  
@@ -109,19 +109,6 @@ For details now how everything has been implemented, refer the source code
 
 * Mention the steps here
 
-## Running the App
-
-Steps and commands for running the app are to be included here
-
-* Example steps:
-  ```
-    Example command
-  ```
-
-## Deployment
-
-This section is completely optional. Add additional notes about how to deploy this on a live system
-
 ## Contributing
 
 Mention what you expect from the people who want to contribute
@@ -134,27 +121,9 @@ If your project has multiple versions, include information about it here.
 
 For the available versions, see the [tags on this repository][tags]
 
-## Authors
-
-#### Madhur Taneja
-* [GitHub]
-* [LinkedIn]
-
-You can also see the complete [list of contributors][contributors] who participated in this project.
-
 ## License
 
 `Project Title` is open source software [licensed as MIT][license].
-
-## Acknowledgments
-
-This section can also be called as `Resources` or `References`
-
-* Code Honor if someone's work was referred to
-* Tutorials followed
-* Articles that helped
-* Inspiration
-* etc
 
 [//]: # (HyperLinks)
 
