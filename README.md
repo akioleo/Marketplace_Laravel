@@ -13,10 +13,10 @@
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
 </div>
 
-
+The project is based on a marketplace, in which we have product registration options, stores, with routes for admin, shopkeepers and the store itself, where customers make purchases with the system directly
 
 ## Getting Started
-Open and view the Project using the `.zip` file provided or at my [GitHub Repository]
+Open and view the Project using the `.zip` file provided
 <br/>
 Or to get started, clone the repository to your directory
   ```
