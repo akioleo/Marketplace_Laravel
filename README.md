@@ -1,20 +1,22 @@
 <div align='center'>
     <h1>Marketplace</h1>
-</div>
-<p align="center">
-  <img src="http://some_place.com/image.png" />
-</p>
-   <a href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
-   ![Current Version](https://img.shields.io/badge/version-v0.1-blue)
-   ![GitHub contributors](https://img.shields.io/github/contributors/akioleo/Marketplace_Laravel)
-   ![GitHub stars](https://img.shields.io/github/stars/akioleo/Marketplace_Laravel?style=social)
-   ![GitHub forks](https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social)
-   ![License](https://img.shields.io/badge/License-MIT-blue)
-
-<div align='center'>
     <a href="./README.md">Inglês |</a>
     <a href="./PORTUGUESE.md">Português</a>
 </div>
+
+![Current Version](https://img.shields.io/badge/version-v0.1-blue)
+![GitHub contributors](https://img.shields.io/github/contributors/madhur-taneja/README-Template)
+![GitHub stars](https://img.shields.io/github/stars/madhur-taneja/README-Template?style=social)
+![GitHub forks](https://img.shields.io/github/forks/madhur-taneja/README-Template?style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/madhurtaneja2?style=social)
+<p align=”center”>
+<a href=”https://www.linkedin.com/in/leonardo-akio/”>
+<img src=”https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue">
+</a>
+
+
+
+(https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue)
 
 
 A template for README files that can be used for your future projects. A small description about the project, shields as well as the link to your repo.
