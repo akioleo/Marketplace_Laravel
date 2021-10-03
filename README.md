@@ -37,9 +37,9 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 Open and view the Project using the `.zip` file provided
 <br/>
 Or to get started, clone the repository to your directory
-
-    git clone https://github.com/akioleo/Marketplace_Laravel.git
-    
+```bash
+> git clone https://github.com/akioleo/Marketplace_Laravel.git
+```    
 Start the local development server
 ```bash
 > php artisan serve
