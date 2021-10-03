@@ -16,10 +16,13 @@
 
 
 ## Getting Started
-To get started, clone the repository to your directory
+Open and view the Project using the `.zip` file provided or at my [GitHub Repository]
+Or to get started, clone the repository to your directory
   ```
     git clone https://github.com/akioleo/Marketplace_Laravel.git
   ```
+  
+  git@github.com:akioleo/Marketplace_Laravel.git
 ## Table of Contents
 - [Getting Started](#getting-started)
 	- [Tools Required](#tools-required)
