@@ -1,9 +1,9 @@
 <div align='center'>
     <h1>Marketplace</h1>
 </div>
-
-<p></p>
-
+<p align="center">
+  <img src="http://some_place.com/image.png" />
+</p>
    <a href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
    ![Current Version](https://img.shields.io/badge/version-v0.1-blue)
    ![GitHub contributors](https://img.shields.io/github/contributors/akioleo/Marketplace_Laravel)
