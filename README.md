@@ -49,16 +49,18 @@ Install all the dependencies using composer
 ```bash
 > composer install
 ```
+Create a new *.env* archive based on *.env.example*
+```bash
+> php -r "copy('.env.example', '.env');"
+```
+
 Generate a new artisan key
 ```bash
 > php artisan key:generate
 ```
 
 ### Configuration
-Create a new *.env* archive based on *.env.example*
-```bash
-> php -r "copy('.env.example', '.env');
-```
+
 In new `.env` file type your database credentials in these lines<br/>
 *Obs: **DB_CONNECTION** changes by the database used. Example: Postgre database (**pgsql**), sqlite, sqlsrv*
 
@@ -72,12 +74,10 @@ In new `.env` file type your database credentials in these lines<br/>
 
 Include personal <a href="https://acesso.pagseguro.uol.com.br/sandbox">PagSeguro</a> credentials
 
-    DB_CONNECTION=mysql  
-    DB_HOST=127.0.0.1  
-    DB_PORT=3306  
-    DB_DATABASE=laravel  
-    DB_USERNAME=root  
-    DB_PASSWORD=
+    PAGSEGURO_ENV=sandbox
+    PAGSEGURO_EMAIL= <yourEmail>
+    PAGSEGURO_TOKEN_SANDBOX= <token>
+    PAGSEGURO_CHARSET=UTF-8
  
 Run the database migrations to create predefined database tables 
 ```bash
@@ -118,7 +118,6 @@ We can check tools versions to avoid some errors
 ├── yarn.lock
 ```
 
-
 ## Development
 
 ### Database relationships
@@ -142,10 +141,25 @@ $this->belongsToMany(Product::class);
 $this->belongsToMany(Category::class);
 ```
 
-
 ### Part 2: Heading
 
-* Mention the steps here
+- `app` - Contains all the Eloquent models
+- `app/Http/Controllers/Api` - Contains all the api controllers
+- `app/Http/Middleware` - Contains the JWT auth middleware
+- `app/Http/Requests/Api` - Contains all the api form requests
+- `app/RealWorld/Favorite` - Contains the files implementing the favorite feature
+- `app/RealWorld/Filters` - Contains the query filters used for filtering api requests
+- `app/RealWorld/Follow` - Contains the files implementing the follow feature
+- `app/RealWorld/Paginate` - Contains the pagination class used to paginate the result
+- `app/RealWorld/Slug` - Contains the files implementing slugs to articles
+- `app/RealWorld/Transformers` - Contains all the data transformers
+- `config` - Contains all the application configuration files
+- `database/factories` - Contains the model factory for all the models
+- `database/migrations` - Contains all the database migrations
+- `database/seeds` - Contains the database seeder
+- `routes` - Contains all the api routes defined in api.php file
+- `tests` - Contains all the application tests
+- `tests/Feature/Api` - Contains all the api tests
 
 ## Contributing
 
