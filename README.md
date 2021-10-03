@@ -23,7 +23,6 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 - [Development](#development)
     - [Part 1: Heading](#part-1-heading)
 	  - [Step 1: Subheading](#step-1-subheading)
-	  - [Step 2: Subheading](#step-2-subheading)
 	- [Part 2: Heading](#part-2-heading)
 - [Contributing](#contributing)
 - [Versioning](#versioning)
@@ -67,7 +66,7 @@ In new `.env` file type your database credentials in these lines<br/>
     DB_PASSWORD=
  
 
-Include personal PagSeguro credentials
+Include personal <a href="https://acesso.pagseguro.uol.com.br/sandbox">PagSeguro</a> credentials
 
     DB_CONNECTION=mysql  
     DB_HOST=127.0.0.1  
@@ -123,17 +122,6 @@ For the available versions, see the [tags on this repository][tags]
 
 ## License
 
-`Project Title` is open source software [licensed as MIT][license].
+`Marketplace` is open source software [licensed as MIT][license].
 
-[//]: # (HyperLinks)
-
-[GitHub Repository]: https://github.com/madhur-taneja/README-Template
-[GitHub Pages]: https://madhur-taneja.github.io/README-Template
-[CONTRIBUTING.md]: https://github.com/madhur-taneja/README-template/blob/master/CONTRIBUTING.md
-[tags]: https://github.com/madhur-taneja/README-template/tags
-
-[GitHub]: https://github.com/madhur-taneja
-[LinkedIn]: https://www.linkedin.com/in/madhur-taneja/
-
-[contributors]: https://github.com/madhur-taneja/README-template/contributors
 [license]: https://github.com/akioleo/Marketplace/blob/master/LICENSE.md
