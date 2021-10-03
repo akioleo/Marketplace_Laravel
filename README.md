@@ -18,8 +18,8 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 
 ## Table of Contents
 - [Getting Started](#getting-started)
-	- [Tools Required](#tools-required)
 	- [Installation](#installation)
+	- [Configuration](#configuration)
 - [Development](#development)
     - [Part 1: Heading](#part-1-heading)
 	  - [Step 1: Subheading](#step-1-subheading)
@@ -43,17 +43,19 @@ Or to get started, clone the repository to your directory
 Start the local development server
 
     php artisan serve
+    
 
-### Configurations
+### Installation
 Install all the dependencies using composer
 
     composer install
-
+    
 Generate a new artisan key
 
     php artisan key:generate
 
 
+### Configuration
 In `.env` file type your database credentials in these lines<br/>
 *Obs: **DB_CONNECTION** changes by the database used. Example: Postgre database (**pgsql**)*
 
@@ -74,17 +76,13 @@ Include personal PagSeguro credentials
     DB_USERNAME=root  
     DB_PASSWORD=
  
- Run the database migrations (**Set the database connection in .env before migrating**)
+Run the database migrations to create predefined database tables 
 
     php artisan migrate  
     
-Run the database migrations (**Set the database connection in .env before migrating**)
+Run seeds to populate the database with data we want to develop in future
 
     php artisan db:seed  
-
-### Installation
-
-
 
 ## Development
 
