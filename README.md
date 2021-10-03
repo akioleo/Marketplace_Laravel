@@ -4,19 +4,12 @@
     <a href="./PORTUGUESE.md">Português</a>
 </div>
 
-   <a href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
+   <a align='center' href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
    ![Current Version](https://img.shields.io/badge/version-v0.1-blue)
    ![GitHub contributors](https://img.shields.io/github/contributors/akioleo/Marketplace_Laravel)
    ![GitHub stars](https://img.shields.io/github/stars/akioleo/Marketplace_Laravel?style=social)
    ![GitHub forks](https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social)
    ![License](https://img.shields.io/badge/License-MIT-blue)
-
-
-<p align=”center”>
-<a href=”https://www.linkedin.com/in/leonardo-akio/”>
-<img src=”https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&labelColor=blue">
-</a>
-</p>
 
 
 
