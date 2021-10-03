@@ -5,18 +5,9 @@
     <img src="https://img.shields.io/github/contributors/akioleo/Marketplace_Laravel"/>
     <img src="https://img.shields.io/github/stars/akioleo/Marketplace_Laravel?style=sociale"/>
     <img src="https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social"/>
-</div>
-
-   
-   <img src="https://img.shields.io/static/v1?label=Blog&message=Rocketseat&color=7159c1&style=for-the-badge&logo=ghost"/>
-   ![Current Version](https://img.shields.io/badge/version-v0.1-blue)
-   ![GitHub contributors](https://img.shields.io/github/contributors/akioleo/Marketplace_Laravel)
-   ![GitHub stars](https://img.shields.io/github/stars/akioleo/Marketplace_Laravel?style=social)
-   ![GitHub forks](https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social)
-
-
-<p></p>
-<div align='center'>
+    <img src="https://img.shields.io/badge/License-MIT-blue"/>
+    
+    <br>
     <a href="./README.md">Inglês |</a>
     <a href="./PORTUGUESE.md">Português</a>
 </div>
