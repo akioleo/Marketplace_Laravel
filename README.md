@@ -21,8 +21,11 @@ Or to get started, clone the repository to your directory
   ```
     git clone https://github.com/akioleo/Marketplace_Laravel.git
   ```
-  
-  git@github.com:akioleo/Marketplace_Laravel.git
+Install all the dependencies using composer
+  ```
+    composer install
+  ```
+
 ## Table of Contents
 - [Getting Started](#getting-started)
 	- [Tools Required](#tools-required)
