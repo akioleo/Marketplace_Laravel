@@ -6,10 +6,14 @@
     <img src="https://img.shields.io/github/stars/akioleo/Marketplace_Laravel?style=sociale"/>
     <img src="https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social"/>
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
-    
+</div>
+
+<p>
+<div align='center'>
     <a href="./README.md">Inglês |</a>
     <a href="./PORTUGUESE.md">Português</a>
 </div>
+</p>
 
 ## Getting Started
 To get started, clone the repository to your directory
