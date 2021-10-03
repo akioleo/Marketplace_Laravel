@@ -12,7 +12,8 @@
     <img src="https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social"/>
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
 </div>
-<br>
+
+[![admin.png](https://i.postimg.cc/ry7xfqVG/admin.png)](https://postimg.cc/NL7KMqrL)
 
 The project is based on a marketplace with `laravel 6`, where we have a stores and products registration, with routes for admin, shopkeepers and the store itself, where customers can make purchases directly on the system.
 
@@ -123,19 +124,19 @@ We can check tools versions to avoid some errors
 ### Database relationships
 
 #### User-Store
-1:1 relationship - where one user ***hasOne*** store and one store ***belongsTo*** an user
+**1:1 relationship** - where one user ***hasOne*** store and one store ***belongsTo*** an user
 ```php
 $this->hasOne(Store::class);
 $this->belongsTo(User::class);
 ```
 #### Store-Products
-1:N relationship - where one store ***hasMany*** products and one product ***belongsTo*** an store
+**1:N relationship** - where one store ***hasMany*** products and one product ***belongsTo*** an store
 ```php
 $this->hasMany(Product::class);
 $this->belongsTo(Store::class);
 ```
 #### Products-Categories
-N:N relationship - where products ***belongsToMany*** categories and categories ***belongsToMany*** products
+**N:N relationship** - where products ***belongsToMany*** categories and categories ***belongsToMany*** products
 ```php
 $this->belongsToMany(Product::class);
 $this->belongsToMany(Category::class);
@@ -147,19 +148,24 @@ $this->belongsToMany(Category::class);
 - `app/Http/Controllers/Api` - Contains all the api controllers
 - `app/Http/Middleware` - Contains the JWT auth middleware
 - `app/Http/Requests/Api` - Contains all the api form requests
-- `app/RealWorld/Favorite` - Contains the files implementing the favorite feature
-- `app/RealWorld/Filters` - Contains the query filters used for filtering api requests
-- `app/RealWorld/Follow` - Contains the files implementing the follow feature
-- `app/RealWorld/Paginate` - Contains the pagination class used to paginate the result
-- `app/RealWorld/Slug` - Contains the files implementing slugs to articles
-- `app/RealWorld/Transformers` - Contains all the data transformers
+- `app/Payment/PagSeguro/CreditCard` - Contains payment rules
+- `app/Traits/UploadTrait` - Contains all traits of project
 - `config` - Contains all the application configuration files
 - `database/factories` - Contains the model factory for all the models
 - `database/migrations` - Contains all the database migrations
 - `database/seeds` - Contains the database seeder
+- `public/assets` - Contains public assets of project
+- `resources/views` - Contains blade documents (front-end)
 - `routes` - Contains all the api routes defined in api.php file
+- `storage/app` - Contains private photos 
 - `tests` - Contains all the application tests
-- `tests/Feature/Api` - Contains all the api tests
+- `tests/Feature` - Contains all the api tests
+- `vendor`- Includes the Composer dependencies in the file autoload.
+- `.env` - A simple text configuration file for controlling your Applications environment constants.
+- `composer.json` - Contains a project name, version and a few other details
+- `composer.lock` - Records the exact versions that are installed
+- `package.json` - Contains few packages such as vue and axios to help you get started building your JavaScript application
+- `phpunit.xml`- A testing utility included by default in a fresh installation of Laravel
 
 ## Contributing
 
