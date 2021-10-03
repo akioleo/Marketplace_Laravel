@@ -13,19 +13,7 @@
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
 </div>
 <br/>
-The project is based on a marketplace, in which we have product registration options, stores, with routes for admin, shopkeepers and the store itself, where customers make purchases with the system directly
-
-## Getting Started
-Open and view the Project using the `.zip` file provided
-<br/>
-Or to get started, clone the repository to your directory
-  ```
-    git clone https://github.com/akioleo/Marketplace_Laravel.git
-  ```
-Install all the dependencies using composer
-  ```
-    composer install
-  ```
+The project is based on a marketplace with `laravel 6*`, where we have a stores and products registration, with routes for admin, shopkeepers and the store itself, where customers can make purchases directly on the system
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -44,34 +32,27 @@ Install all the dependencies using composer
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
+  ```
+    composer install
+  ```
+  ```
+    composer install
+  ```
+
+
+
+
 ## Getting Started
-
-The project might have multiple branches: `master`, `development`, etc. which can be explained here
-
-* `master` contains aggregate code of all branches
-* `development` contains code under development
-
-Other details that need to be given while starting out with the project can be provided in this section. A project structure like below can also be included for the big projects:
-
-```
-	project-title
-	├── README.md
-	├── package.json
-	├── .gitignore
-	├── public
-	│   ├── favicon.ico
-	│   ├── index.html
-	│   └── manifest.json
-	└── src
-		├── App.css
-		├── App.js
-		├── App.test.js
-		├── index.css
-		├── index.js
-		├── logo.svg
-		└── serviceWorker.js
-		└── setupTests.js
-```
+Open and view the Project using the `.zip` file provided
+<br/>
+Or to get started, clone the repository to your directory
+  ```
+    git clone https://github.com/akioleo/Marketplace_Laravel.git
+  ```
+Install all the dependencies using composer
+  ```
+    composer install
+  ```
 
 ### Tools Required
 
