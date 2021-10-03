@@ -18,11 +18,11 @@
 The project is based on a marketplace with `laravel 6`, where we have a stores and products registration, with routes for admin, shopkeepers and the store itself, where customers can make purchases directly on the system.
 
 ## Table of Contents
+- [Structure](#structure)
 - [Getting Started](#getting-started)
 	- [Installation](#installation)
 	- [Configuration](#configuration)
 	- [Versions](#versions)
-- [Structure](#structure)
 - [Development](#development)
     - [Database relationships](#database-relationships)
         - [User-Store](#user-store) 
@@ -32,6 +32,27 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
 - [Contributing](#contributing)
 - [License](#license)
 
+## Structure 
+
+```bash
+├── app/
+├── config/
+├── database/
+├── public/
+├── resources/
+├── routes/
+├── storage./
+├── tests/
+├── vendor/
+├── artisan
+├── composer.json
+├── composer.lock
+├── package.json
+├── phpunit.xml
+├── server.php
+├── webpack.mix.js
+├── yarn.lock
+```
 
 ## Getting Started
 Open and view the Project using the `.zip` file provided
@@ -96,27 +117,6 @@ We can check tools versions to avoid some errors
 ***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
 ```bash
 > php artisan migrate:refresh
-```
-## Structure 
-
-```bash
-├── app
-├── artisan
-├── composer.json
-├── composer.lock
-├── config
-├── database
-├── package.json
-├── phpunit.xml
-├── public
-├── resources
-├── routes
-├── server.php
-├── storage.
-├── tests
-├── vendor
-├── webpack.mix.js
-├── yarn.lock
 ```
 
 ## Development
