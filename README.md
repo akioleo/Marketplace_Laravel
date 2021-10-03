@@ -9,6 +9,7 @@
    ![GitHub forks](https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social)
    ![License](https://img.shields.io/badge/License-MIT-blue)
 
+<p></p>
 <div align='center'>
     <a href="./README.md">Inglês |</a>
     <a href="./PORTUGUESE.md">Português</a>
