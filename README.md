@@ -28,7 +28,7 @@ The project is based on a marketplace with `laravel 6`, where we have a stores a
         - [User-Store](#user-store) 
         - [Store-Products](#store-products)
         - [Products-Categories](#products-categories)
-	- [Part 2: Heading](#part-2-heading)
+	- [Paths](#paths)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -142,7 +142,7 @@ $this->belongsToMany(Product::class);
 $this->belongsToMany(Category::class);
 ```
 
-### Part 2: Heading
+### Paths
 
 - `app` - Contains all the Eloquent models
 - `app/Http/Controllers/Api` - Contains all the api controllers
