@@ -13,9 +13,7 @@
    ![GitHub forks](https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social)
    ![License](https://img.shields.io/badge/License-MIT-blue)
 
-
-
-(https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue)
+## 🤔 Inspiração
 
 
 A template for README files that can be used for your future projects. A small description about the project, shields as well as the link to your repo.
