@@ -1,7 +1,5 @@
 <div align='center'>
     <h1>Marketplace</h1>
-    <a href="./README.md">Inglês |</a>
-    <a href="./PORTUGUESE.md">Português</a>
 </div>
 
 <p></p>
@@ -13,7 +11,10 @@
    ![GitHub forks](https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social)
    ![License](https://img.shields.io/badge/License-MIT-blue)
 
-## 🤔 Inspiração
+<div align='center'>
+    <a href="./README.md">Inglês |</a>
+    <a href="./PORTUGUESE.md">Português</a>
+</div>
 
 
 A template for README files that can be used for your future projects. A small description about the project, shields as well as the link to your repo.
