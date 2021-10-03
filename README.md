@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
 </div>
 <br/>
-The project is based on a marketplace with `.zip`, where we have a stores and products registration, with routes for admin, shopkeepers and the store itself, where customers can make purchases directly on the system
+The project is based on a marketplace with *laravel 6*, where we have a stores and products registration, with routes for admin, shopkeepers and the store itself, where customers can make purchases directly on the system
 
 ## Table of Contents
 - [Getting Started](#getting-started)
