@@ -12,9 +12,9 @@
     <img src="https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social"/>
     <img src="https://img.shields.io/badge/License-MIT-blue"/>
 </div>
-<p>
+<br/>
 The project is based on a marketplace, in which we have product registration options, stores, with routes for admin, shopkeepers and the store itself, where customers make purchases with the system directly
-</p>
+
 ## Getting Started
 Open and view the Project using the `.zip` file provided
 <br/>
