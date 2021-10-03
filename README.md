@@ -1,8 +1,8 @@
 # Marketplace
 
 <a href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
+![GitHub contributors](https://img.shields.io/github/contributors/akioleo/Marketplace_Laravel)
 ![Current Version](https://img.shields.io/badge/version-v0.1-blue)
-![GitHub contributors](https://img.shields.io/github/contributors/madhur-taneja/README-Template)
 ![GitHub stars](https://img.shields.io/github/stars/akioleo/Marketplace_Laravel?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/akioleo/Marketplace_Laravel?style=social)
 ![License](https://img.shields.io/badge/License-MIT-blue)
