@@ -1,5 +1,6 @@
 <div align='center'>
-    <h1>Marketplace</h1>
+    <h1>Marketplace</h1> <a href="./README.md">Inglês |</a>
+    <a href="./PORTUGUESE.md">Português</a>
     <a href="https://www.linkedin.com/in/leonardo-akio/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn%20-blue?style=flat&logo=linkedin&labelColor=blue" target="_blank"></a> 
     <img src="https://img.shields.io/badge/version-v0.1-blue"/>
     <img src="https://img.shields.io/github/contributors/akioleo/Marketplace_Laravel"/>
